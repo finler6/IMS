@@ -22,3 +22,16 @@ void print_messages_between_users(Message messages[], int message_count, int use
     }
     printf("+------------------------------------------------------------+\n");
 }
+
+void print_messages_in_time_range(Message messages[], int message_count, int start_time, int end_time) {
+    printf("+------------------------------------------------------------+\n");
+    printf("| ID zprávy | Odesílatel | Příjemce | Obsah                  |\n");
+    printf("+------------------------------------------------------------+\n");
+    for (int i = 0; i < message_count; i++) {
+        if (messages[i].timestamp >= start_time && messages[i].timestamp <= end_time) {
+            printf("| %-9d | %-10d | %-8d | %-23s |\n",
+                   messages[i].id, messages[i].sender_id, messages[i].receiver_id, messages[i].content);
+        }
+    }
+    printf("+------------------------------------------------------------+\n");
+}
